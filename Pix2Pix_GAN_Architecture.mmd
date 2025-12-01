@@ -1,0 +1,54 @@
+graph TB
+    Input["Input Image"]
+    
+    subgraph Generator["Generator Network"]
+        Encoder["Encoder<br/>(Conv Layers)"]
+        Bottleneck["Bottleneck<br/>(Deep Representation)"]
+        Decoder["Decoder<br/>(DeConv Layers)"]
+        
+        Encoder --> Bottleneck
+        Bottleneck --> Decoder
+    end
+    
+    Output["Output Image"]
+    Loss["Loss Calculation"]
+    
+    subgraph Discriminator["Discriminator Network"]
+        DiscInput["Input:<br/>Real/Fake Image Pair"]
+        DiscConv["Conv Layers<br/>(Feature Extraction)"]
+        DiscOutput["Output:<br/>Real/Fake Classification"]
+        
+        DiscInput --> DiscConv
+        DiscConv --> DiscOutput
+    end
+    
+    Input --> Encoder
+    Encoder --> Bottleneck
+    Bottleneck --> Decoder
+    Decoder --> Output
+    Output --> Loss
+    Output --> DiscInput
+    DiscOutput --> Loss
+    
+    Loss -.->|Backprop| Encoder
+    Loss -.->|Backprop| DiscConv
+    
+    style Input fill:#e8e8e8,stroke:#333,stroke-width:2px,color:#000
+    style Output fill:#d0d0d0,stroke:#333,stroke-width:2px,color:#000
+    style Encoder fill:#c0c0c0,stroke:#333,stroke-width:2px,color:#000
+    style Bottleneck fill:#c0c0c0,stroke:#333,stroke-width:2px,color:#000
+    style Decoder fill:#c0c0c0,stroke:#333,stroke-width:2px,color:#000
+    style DiscInput fill:#a8a8a8,stroke:#333,stroke-width:2px,color:#fff
+    style DiscConv fill:#a8a8a8,stroke:#333,stroke-width:2px,color:#fff
+    style DiscOutput fill:#a8a8a8,stroke:#333,stroke-width:2px,color:#fff
+    style Loss fill:#808080,stroke:#333,stroke-width:2px,color:#fff
+    
+    style Input fill:#e8e8e8,stroke:#333,stroke-width:2px,color:#000
+    style Output fill:#d0d0d0,stroke:#333,stroke-width:2px,color:#000
+    style Encoder fill:#c0c0c0,stroke:#333,stroke-width:2px,color:#000
+    style Bottleneck fill:#c0c0c0,stroke:#333,stroke-width:2px,color:#000
+    style Decoder fill:#c0c0c0,stroke:#333,stroke-width:2px,color:#000
+    style DiscInput fill:#a8a8a8,stroke:#333,stroke-width:2px,color:#fff
+    style DiscConv fill:#a8a8a8,stroke:#333,stroke-width:2px,color:#fff
+    style DiscOutput fill:#a8a8a8,stroke:#333,stroke-width:2px,color:#fff
+    style Loss fill:#808080,stroke:#333,stroke-width:2px,color:#fff

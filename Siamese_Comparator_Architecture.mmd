@@ -1,0 +1,27 @@
+graph TD
+    A[Input Image 1] --> B[Feature Extractor]
+    C[Input Image 2] --> D[Feature Extractor]
+    B --> E[Feature Vector 1]
+    D --> F[Feature Vector 2]
+    E --> G[Distance Metric]
+    F --> G
+    G --> H[Similarity Score]
+    style A fill:#d3d3d3,stroke:#333,stroke-width:2px,color:#000
+    style C fill:#d3d3d3,stroke:#333,stroke-width:2px,color:#000
+    style B fill:#a9a9a9,stroke:#333,stroke-width:2px,color:#000
+    style D fill:#a9a9a9,stroke:#333,stroke-width:2px,color:#000
+    style E fill:#808080,stroke:#333,stroke-width:2px,color:#fff
+    style F fill:#808080,stroke:#333,stroke-width:2px,color:#fff
+    style G fill:#505050,stroke:#333,stroke-width:2px,color:#fff
+    style H fill:#2f2f2f,stroke:#333,stroke-width:2px,color:#fff
+    classDef inputStyle fill:#d3d3d3,stroke:#333,stroke-width:2px,color:#000
+    classDef featureExtractorStyle fill:#a9a9a9,stroke:#333,stroke-width:2px,color:#000
+    classDef featureVectorStyle fill:#808080,stroke:#333,stroke-width:2px,color:#fff
+    classDef distanceMetricStyle fill:#505050,stroke:#333,stroke-width:2px,color:#fff
+    classDef outputStyle fill:#2f2f2f,stroke:#333,stroke-width:2px,color:#fff
+    class A,C inputStyle
+    class B,D featureExtractorStyle
+    class E,F featureVectorStyle
+    class G distanceMetricStyle
+    class H outputStyle
+
